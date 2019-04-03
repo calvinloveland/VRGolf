@@ -3,18 +3,14 @@ using UnityEngine;
 
 public class AntiGravityTrigger : MonoBehaviour {
 
-    public float hoverForce = 12f;
+    public float hoverForce = 9.807f;
 
-    void OnTriggerEnter(Collider other) {
-        Debug.Log("Object entered the trigger");
-    }
+    void OnTriggerEnter(Collider other) => Debug.Log(message: $"{other.name} entered the trigger");
 
     void OnTriggerStay(Collider other) {
         other.GetComponent<Rigidbody>().AddForce(Vector3.up * hoverForce, ForceMode.Acceleration);
-        Debug.Log("Object is within trigger");
+        Debug.Log(message: $"{other.name} is within the trigger");
     }
 
-    void OnTriggerExit(Collider other) {
-        Debug.Log("Object exited the trigger");
-    }
+    void OnTriggerExit(Collider other) => Debug.Log(message: $"{other.name} exited the trigger");
 }
