@@ -18,8 +18,8 @@ public class BallPhysics : MonoBehaviour {
         timer += Time.deltaTime;
         if (timer > timeUntilStopping) {
             if (GetComponent<Rigidbody>().velocity.magnitude <= stoppingThreshold) {
-                GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                //GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+                //GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                 playerCamera.transform.position = transform.position + offset;
                 timer = 0.0f;
             }
