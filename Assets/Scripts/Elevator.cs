@@ -5,7 +5,7 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     public float distance;
-    public float frequency;
+    public float period;
     private float start;
     private bool goingUp;
     // Start is called before the first frame update
@@ -17,12 +17,10 @@ public class Elevator : MonoBehaviour
 
     void FixedUpdate()
     {
-
-        float movement = distance / frequency;
+        float movement = distance / period;
         if (goingUp)
             movement *= -1;
-        Debug.Log(transform.position.y);
-        if (transform.position.z > start)
+        if (transform.position.y > start)
             goingUp = false;
         if (transform.position.y < start + distance)
             goingUp = true;
