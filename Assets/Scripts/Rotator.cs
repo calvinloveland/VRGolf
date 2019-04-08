@@ -1,18 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Rotator : MonoBehaviour
-{
-    public float rpm;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class Rotator : MonoBehaviour {
 
-    void FixedUpdate()
-    {
-        transform.rotation *= Quaternion.Euler(0, rpm, 0);
+    public float rotationsPerMinute;
+
+    public void Update() {
+        transform.rotation *= Quaternion.Euler(0, rotationsPerMinute * Time.deltaTime, 0);
+
     }
 }

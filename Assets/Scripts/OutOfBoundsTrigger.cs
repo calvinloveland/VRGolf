@@ -1,13 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class OutOfBoundsTrigger : MonoBehaviour
-{
-    void OnTriggerExit(Collider other) {
-        BallPhysics bp = other.GetComponent<BallPhysics>();
-        if (bp) {
-            bp.Reset();
-        }
+public class OutOfBoundsTrigger : MonoBehaviour {
+
+    public void OnTriggerExit(Collider other) {
+        BallPhysics ballPhysics = other.GetComponent<BallPhysics>();
+        if (ballPhysics) ballPhysics.Reset();
     }
 }

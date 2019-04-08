@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/DeathStar.unity
     guid: e93bd5bf2f5cd5f49a2a21df7bf05fd5
   - enabled: 1
-    path: Assets/Scenes/DrewBegginer.unity
+    path: Assets/Scenes/DrewBeginner.unity
     guid: 0a2f5a3a549683f4d9936d6a963704c6
   m_configObjects: {}

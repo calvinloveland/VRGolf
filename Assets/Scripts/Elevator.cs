@@ -1,29 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Elevator : MonoBehaviour
-{
-    public float distance;
-    public float period;
+public class Elevator : MonoBehaviour {
+
+    public float offset;
+    public float travelTimeSeconds;
+
+    private bool goingDown;
+    private float distance;
     private float start;
-    private bool goingUp;
-    // Start is called before the first frame update
-    void Start()
-    {
-        goingUp = false;
+    private float end;
+    
+    public void Start() {
+        goingDown = false;
+
         start = transform.position.y;
+        end = start + offset;
+
+        // Set the start to be above the end
+        if (start < end) {
+            var swap = end;
+            end = start;
+            start = swap;
+        }
+
+        distance = start - end;
     }
 
-    void FixedUpdate()
-    {
-        float movement = distance / period;
-        if (goingUp)
-            movement *= -1;
-        if (transform.position.y > start)
-            goingUp = false;
-        if (transform.position.y < start + distance)
-            goingUp = true;
-        transform.Translate(Vector3.forward * movement);
+    public void Update() {
+        if (transform.position.y > start) goingDown = true;
+        if (transform.position.y < end) goingDown = false;
+
+        float deltaDistance = distance / travelTimeSeconds;
+        if (goingDown) deltaDistance *= -1;
+
+        transform.Translate(Vector3.forward * deltaDistance * Time.deltaTime);
     }
 }

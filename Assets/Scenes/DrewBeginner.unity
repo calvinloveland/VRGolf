@@ -2059,10 +2059,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 10.21
       objectReference: {fileID: 0}
-    - target: {fileID: 400310, guid: 8f855197a13bf0a4fadebeaaa1362b07, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400110, guid: 8f855197a13bf0a4fadebeaaa1362b07, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
@@ -2098,6 +2094,10 @@ PrefabInstance:
     - target: {fileID: 400110, guid: 8f855197a13bf0a4fadebeaaa1362b07, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0011396445
+      objectReference: {fileID: 0}
+    - target: {fileID: 400310, guid: 8f855197a13bf0a4fadebeaaa1362b07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f855197a13bf0a4fadebeaaa1362b07, type: 3}
@@ -2717,8 +2717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae12487be01abc4fad7fc9f703ca891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: -0.54
-  period: 50
+  offset: -0.54
+  travelTimeSeconds: 2
 --- !u!1 &963014308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100256, guid: 8f855197a13bf0a4fadebeaaa1362b07,
@@ -4304,7 +4304,7 @@ GameObject:
   - component: {fileID: 1626881456}
   - component: {fileID: 1626881461}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4324,8 +4324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2137238770}
   stoppingThreshold: 0.5
-  timeUntilStopping: 0
-  stop: 1
+  timeToStopBallSeconds: 2
 --- !u!135 &1626881457
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4392,7 +4391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626881455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.25, y: 10.76, z: 54.69}
+  m_LocalPosition: {x: -6.28, y: 10.61, z: 54.69}
   m_LocalScale: {x: 0.070957065, y: 0.070957065, z: 0.070957065}
   m_Children: []
   m_Father: {fileID: 0}

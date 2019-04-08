@@ -4,38 +4,37 @@ public class BallPhysics : MonoBehaviour {
 
     public GameObject playerCamera;
     public float stoppingThreshold;
-    public float timeUntilStopping;
-    public bool stop;
+    public float timeToStopBallSeconds;
 
-    private float timer = 0.0f;
-    private Vector3 offset;
-    private Vector3 lastPosition;
+    private float timeUntilStopping = 0.0f;
+    private Vector3 cameraOffset;
+    private Vector3 lastBallPosition;
 
     void Start() {
-        stoppingThreshold = GetComponent<BallPhysics>().stoppingThreshold;
-        offset = playerCamera.transform.position - transform.position;
-        lastPosition = transform.position;
+        cameraOffset = playerCamera.transform.position - transform.position;
+        lastBallPosition = transform.position;
     }
 
     void Update() {
-        timer += Time.deltaTime;
-        if (stop && timer > timeUntilStopping) {
-            if (GetComponent<Rigidbody>().velocity.magnitude <= stoppingThreshold) {
-                GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
-                GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                playerCamera.transform.position = transform.position + offset;
-                timer = 0.0f;
-                lastPosition = transform.position;
-            }
-        }
+        timeUntilStopping += Time.deltaTime;
+
+        if (timeUntilStopping > timeToStopBallSeconds)
+            if (GetComponent<Rigidbody>().velocity.magnitude <= stoppingThreshold)
+                StopObject();
     }
 
     public void Reset() {
-        transform.position = lastPosition;
+        transform.position = lastBallPosition;
+        StopObject();
+    }
+
+    private void StopObject() {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
 
-        //In case of emergency uncomment line
-        //playerCamera.transform.position = transform.position + offset;
+        timeUntilStopping = 0.0f;
+        playerCamera.transform.position = transform.position + cameraOffset;
+
+        lastBallPosition = transform.position;
     }
 }
