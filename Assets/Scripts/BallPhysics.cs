@@ -5,6 +5,7 @@ public class BallPhysics : MonoBehaviour {
     public GameObject playerCamera;
     public float stoppingThreshold;
     public float timeToStopBallSeconds;
+    public float slowdown = 1.1f;
 
     private float timeUntilStopping = 0.0f;
     private Vector3 cameraOffset;
@@ -21,6 +22,11 @@ public class BallPhysics : MonoBehaviour {
         if (timeUntilStopping > timeToStopBallSeconds)
             if (GetComponent<Rigidbody>().velocity.magnitude <= stoppingThreshold)
                 StopObject();
+            else
+            {
+                GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity / slowdown;
+                GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity / slowdown;
+            }
     }
 
     public void Reset() {

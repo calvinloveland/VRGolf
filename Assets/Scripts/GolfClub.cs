@@ -2,13 +2,16 @@
 
 public class GolfClub : MonoBehaviour {
 
-    public GameObject golfBall;
-    public float sensitivity = 100f;
+    public Vector3 velocity;
+    private Vector3 lastPosistion;
 
-    public void OnTriggerEnter(Collider other) {
-        if (other.gameObject != golfBall) return;
-
-        ;
-        other.GetComponent<Rigidbody>().AddForce((Vector3.one + other.GetComponent<Rigidbody>().velocity.normalized) * sensitivity, ForceMode.Acceleration);
+    public void Start() {
+        lastPosistion = transform.position;
     }
+
+    public void FixedUpdate() {
+        velocity = (transform.position - lastPosistion) * (1/Time.fixedDeltaTime);
+        lastPosistion = transform.position;
+    }
+
 }

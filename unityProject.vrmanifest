@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.minigolfvr.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\User\\Desktop\\VRGolf\\actions.json",
+      "action_manifest_path": "D:\\Games\\Unity\\MiniGolfVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "MiniGolfVR [Testing]"
