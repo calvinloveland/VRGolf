@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Valve.VR;
 
 public class BallPhysics : MonoBehaviour {
 
@@ -17,16 +20,19 @@ public class BallPhysics : MonoBehaviour {
     }
 
     void Update() {
+        if (SteamVR_Actions._default.Teleport.GetState(SteamVR_Input_Sources.Any))
+            playerCamera.transform.position = transform.position + cameraOffset;
+
         timeUntilStopping += Time.deltaTime;
 
-        if (timeUntilStopping > timeToStopBallSeconds)
+        if (timeUntilStopping > timeToStopBallSeconds) {
             if (GetComponent<Rigidbody>().velocity.magnitude <= stoppingThreshold)
                 StopObject();
-            else
-            {
+            else {
                 GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity / slowdown;
                 GetComponent<Rigidbody>().angularVelocity = GetComponent<Rigidbody>().angularVelocity / slowdown;
             }
+        }
     }
 
     public void Reset() {
@@ -39,7 +45,8 @@ public class BallPhysics : MonoBehaviour {
         GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
 
         timeUntilStopping = 0.0f;
-        playerCamera.transform.position = transform.position + cameraOffset;
+
+        // playerCamera.transform.position = transform.position + cameraOffset;
 
         lastBallPosition = transform.position;
     }
