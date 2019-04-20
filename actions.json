@@ -41,11 +41,6 @@
       "requirement": "optional"
     },
     {
-      "name": "/actions/default/in/TriggerPull",
-      "type": "boolean",
-      "requirement": "suggested"
-    },
-    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

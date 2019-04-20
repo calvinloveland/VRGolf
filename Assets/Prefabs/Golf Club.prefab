@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
+  trackedObject: {fileID: 0}
+  NextScene: 1
 --- !u!1 &5770890400852430047
 GameObject:
   m_ObjectHideFlags: 0
